@@ -1,17 +1,20 @@
-import re
+
 from playwright.sync_api import Page,expect
 
-def test_has_title(page:Page):
-    page.goto("https://playwright.dev/")
-
-    # Expect a title "to contain" a substring
-    expect(page).to_have_title(re.compile("Playwright"))
+amazon_url = "https://www.amazon.de/"
+#def test_has_title(page:Page):
+#    page.goto(amazon_url)
+#
+#    # Expect a title "to contain" a substring
+#    expect(page).to_have_title(re.compile("günstige"))
 
 def test_get_started_link(page:Page):
-    page.goto("https://playwright.dev/")
+    page.goto(amazon_url)
 
-    # Click the get started link
-    page.get_by_role("link", name="Get started").click()
-
+    # Click the Akzeptieren(cookies) button
+    page.locator("css=input[name='accept']").click()
+    
     # Expects page to have a heading with the name of installation
-    expect(page.get_by_role("heading", name="Installation")).to_be_visible()
+    expect(page.locator("css=#nav-logo-sprites")).to_be_visible()
+
+    

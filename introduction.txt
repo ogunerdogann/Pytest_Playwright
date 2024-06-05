@@ -1,0 +1,16 @@
+------------- Installing pytest and playwright ------------------
+pip install -U pytest
+pytest --version
+pip install pytest-playwright
+playwright install                          
+pip install pytest-playwright playwright -U --> update playwright
+playwright -V                               --> version of playwright
+
+!!! Test files must have "test_" prefix !!!
+
+-------------- Running a Test ------------
+pytest              --> runs test in headless mode
+pytest --headed     --> runs test in headed mode
+
+!!! DOM = Document Object Model
+
