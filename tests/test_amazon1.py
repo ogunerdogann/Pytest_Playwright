@@ -1,5 +1,5 @@
 import re 
-from playwright.sync_api import Page,expect
+from playwright.sync_api import Page,expect,Locator
 
 amazon_url = "https://www.amazon.de/"
 def test_has_title(page:Page):
@@ -17,4 +17,3 @@ def test_get_started_link(page:Page):
     # Expects page to have a heading with the name of installation
     expect(page.locator("css=#nav-logo-sprites")).to_be_visible()
 
-    

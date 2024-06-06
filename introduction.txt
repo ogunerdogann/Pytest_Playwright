@@ -9,8 +9,14 @@ playwright -V                               --> version of playwright
 !!! Test files must have "test_" prefix !!!
 
 -------------- Running a Test ------------
-pytest              --> runs test in headless mode
-pytest --headed     --> runs test in headed mode
+pytest                                          --> runs test in headless mode
+pytest --headed                                 --> runs test in headed mode
+pytest --browser webkit                         --> runs test in webkit browser
+pytest --browser webkit --browser firefox       --> tuns test in webkit and firefox browsers
+
+-----> Run specific tests
+pytest test_login.py                                         ---> runs the test file, which named test_login
+pytest tests/test_todo_page.py tests/test_landing_page.py    ---> runs 2 test files
 
 !!! DOM = Document Object Model
 
@@ -19,3 +25,4 @@ pytest --headed     --> runs test in headed mode
 [attribute^=value]	a[href^="https"]	Selects every <a> element whose href attribute value begins with "https"
 [attribute$=value]	a[href$=".pdf"]	Selects every <a> element whose href attribute value ends with ".pdf"
 [attribute*=value]	a[href*="w3schools"]	Selects every <a> element whose href attribute value contains the substring "w3schools"
+
