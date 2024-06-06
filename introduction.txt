@@ -21,8 +21,8 @@ pytest tests/test_todo_page.py tests/test_landing_page.py    ---> runs 2 test fi
 !!! DOM = Document Object Model
 
 ---------------- CSS Selectors (Locating) -------------------------
-[attribute=value]	[target="_blank"]	Selects all elements with target="_blank"
-[attribute^=value]	a[href^="https"]	Selects every <a> element whose href attribute value begins with "https"
-[attribute$=value]	a[href$=".pdf"]	Selects every <a> element whose href attribute value ends with ".pdf"
+[attribute=value]	[target="_blank"]	    Selects all elements with target="_blank"
+[attribute^=value]	a[href^="https"]	    Selects every <a> element whose href attribute value begins with "https"
+[attribute$=value]	a[href$=".pdf"]	        Selects every <a> element whose href attribute value ends with ".pdf"
 [attribute*=value]	a[href*="w3schools"]	Selects every <a> element whose href attribute value contains the substring "w3schools"
 
