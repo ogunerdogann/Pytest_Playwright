@@ -15,3 +15,10 @@ def before_each_after_each(page:Page):
 def test_main_navigation(page:Page):
     # Assertions use the expect API
     expect(page).to_have_url("https://playwright.dev/")
+
+'''
+You can use various fixtures to execute code before or after your tests and to share objects between them.
+A function scoped fixture e.g. with autouse behaves like a beforeEach/afterEach.
+And a module scoped fixture with autouse behaves like a beforeAll/afterAll which runs before all and after all the tests.
+'''
+#deneme 
