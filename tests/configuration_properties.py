@@ -4,18 +4,20 @@ import re
 
 
 
-@pytest.fixture(scope="function", name="go_to_amazon", autouse=True)
+@pytest.fixture(scope="function")
 def go_to_amazon(page:Page):
     page.goto("https://www.amazon.de/")
     # Click the Akzeptieren(cookies) button
-    page.locator("css=input[name='accept']").click(timeout=3000)
+    button = page.locator("css=input[name='accept']")
+    button.click()
     expect(page).to_have_title(re.compile("Günstige"))
 
-@pytest.fixture(scope="function", name="negative_login", autouse=True)
+@pytest.fixture(scope="function")
 def negative_login(page:Page):
     print("second fixture")
-    page.locator("css=[id='nav-link-accountList']").hover(timeout=2000)
-    page.locator(page.get_by_text("Anmelden")).click(timeout=2000)
+    button = page.locator("css=[id='nav-link-accountList']")
+    button.hover()
+    button.click()
     expect(page).to_have_title("Amazon Anmelden")
 
     
