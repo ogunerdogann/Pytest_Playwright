@@ -15,3 +15,4 @@ class Amazon_MainPage:
               "Lebensmittel",
               "Küche, Haushalt & Wohnen"]
     PRIME_STUDENT_TEXT = "a[aria-label='Student']"
+    DENEME = 0 #github baglanmaya calisiliyor!!!
