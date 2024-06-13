@@ -1,15 +1,16 @@
-from playwright.sync_api import Page,expect, Locator
+from playwright.sync_api import Page,expect
 from amazon_mainPage import Amazon_MainPage, Search_Words
 import pytest
 
 class Amazon_MainPageTests:
 
-   button = 'hello'
+  "If I delete this line then an error appear on line 9. IDK why for now"
    
 @pytest.mark.test1
 def test_get_started_link(page:Page, go_to_amazon_main_page):
    
     #deneme = "css=[type='submit']"
+
     # Expects page to have a heading with the name of installation
     expect(page.locator(Amazon_MainPage.AMAZON_LOGO)).to_be_visible()
     expect(page.locator(Amazon_MainPage.SEARCH_BOX)).to_be_visible()
@@ -31,9 +32,13 @@ def test_nutella(page:Page, go_to_amazon_main_page):
 @pytest.mark.test3
 def test_footer(page:Page, go_to_amazon_main_page):
     
-    page.mouse.wheel(0,13188)
+    page.mouse.wheel(0,13188)      
+    # x,y (horizontal-vertical) coordinats of an element.
+    # You can get this values under Inspect->Styles
     page.wait_for_timeout(5000)
     for i in range(0,12):
         expect(page.locator(Amazon_MainPage.FOOTER_ELEMENT).nth(i)).to_be_visible()
+        # if there are too many elements with same class, id etc.
+        # you can locate just one of them and nth(<index>) will get the rest. 
 
         

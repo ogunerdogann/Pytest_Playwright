@@ -21,6 +21,13 @@ class Amazon_MainPage:
     FOOTER_ELEMENT = "td.navFooterDescItem"      #"span[class='navFooterDescText']"  # !! index 9
 
 class Search_Words(Enum):
+    
+    '''
+    A wonderful using of Enums in Python. You can just give
+    the first value(int or str<letter>), auto() will assign 
+    the rest values automaticly.  
+    '''
+    
     NUTELLA = 1
     DORITOS = auto()
     BOUNTY = auto()
@@ -28,4 +35,4 @@ class Search_Words(Enum):
     PEPSI = auto()
     MANGO = auto()
     MORITZ_FIEGE = auto() 
-
+    
