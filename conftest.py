@@ -3,7 +3,6 @@ import re
 from playwright.sync_api import Page,expect
 
 
-
 pytest_plugins = [  ]
 
 def pytest_addoption(parser) -> None:
@@ -13,7 +12,6 @@ def pytest_addoption(parser) -> None:
         default = "https://www.amazon.de/",
         help = "Amazon main page URL"
     )
-
 
 @pytest.fixture(scope = "function")
 def go_to_amazon_main_page(request, page:Page):
