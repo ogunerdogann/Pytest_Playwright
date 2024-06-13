@@ -10,8 +10,9 @@ class Amazon_MainPageTests:
 def test_get_started_link(page:Page, go_to_amazon_main_page):
    
     #deneme = "css=[type='submit']"
-
+    
     # Expects page to have a heading with the name of installation
+    page.wait_for_timeout(1000)
     expect(page.locator(Amazon_MainPage.AMAZON_LOGO)).to_be_visible()
     expect(page.locator(Amazon_MainPage.SEARCH_BOX)).to_be_visible()
     expect(page.get_by_role("link", name="Amazon Basics ")).to_be_visible()
@@ -24,6 +25,7 @@ def test_nutella(page:Page, go_to_amazon_main_page):
     search_word = ""
     for i in range(1,len(list(Search_Words))+1):
         search_word = Search_Words(i).name
+        page.pause()
         page.locator(Amazon_MainPage.SEARCH_BOX).fill(search_word)
         page.locator(Amazon_MainPage.SEARCH_SUBMIT_BUTTON).click()
         page.wait_for_timeout(5000)

@@ -26,3 +26,10 @@ pytest tests/test_todo_page.py tests/test_landing_page.py    ---> runs 2 test fi
 [attribute$=value]	a[href$=".pdf"]	        Selects every <a> element whose href attribute value ends with ".pdf"
 [attribute*=value]	a[href*="w3schools"]	Selects every <a> element whose href attribute value contains the substring "w3schools"
 
+---------------- Controlling Tests Headed Step By Step -------------------
+With the help of Playwright Inspector, we can use Debug Script. That means,
+we can watch and control our tests headed and step by step. For that; 
+ 
+1- write page.pause() in your code, from where you want to control. 
+2- go to Terminal and set Playwright Debugger value to 1. --> set PWDEBUG=1
+3- run your test 
