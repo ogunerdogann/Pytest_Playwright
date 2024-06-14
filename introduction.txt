@@ -87,3 +87,12 @@ To record a test you should run your test like that:
 After that a folder which named 'test-results' will be created
 and the whole test will be recorded as video. With --slowmo=500
 your test steps will run with 0.5 second interval.
+
+
+--------------------------- Tracing and Xml Report ---------------------------------
+--tracing retain-on-failure --output ./test_results --screenshot only-on-failure --junitxml=./test_results/report.xml
+
+With this line (93) we can take screenshot where the failure is and create and xml report. 
+After run the test, you should change directory in command line using 'cd <directory name>' command to the xml report folder
+and than you should write 'playawright show-trace trace.zip' on command line. 
+You can see all the details about your failed test. A perfect Debug tool!!
