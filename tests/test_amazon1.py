@@ -6,8 +6,9 @@ class Amazon_MainPageTests:
 
   "If I delete this line then an error appear on line 9. IDK why for now"
    
+@pytest.mark.UI
 @pytest.mark.test1
-def test_get_started_link(page:Page, go_to_amazon_main_page):
+def test_get_started_link(page:Page):
    
     #deneme = "css=[type='submit']"
     
@@ -20,8 +21,9 @@ def test_get_started_link(page:Page, go_to_amazon_main_page):
     for i in range(0,len(Amazon_MainPage.NAVBAR)):
         expect(page.get_by_role("link", name=Amazon_MainPage.NAVBAR[i]).first).to_be_visible()
 
+@pytest.mark.UI
 @pytest.mark.test2       
-def test_nutella(page:Page, go_to_amazon_main_page):
+def test_nutella(page:Page):
     search_word = ""
     for i in range(1,len(list(Search_Words))+1):
         search_word = Search_Words(i).name
@@ -31,8 +33,9 @@ def test_nutella(page:Page, go_to_amazon_main_page):
         page.wait_for_timeout(5000)
         expect(page.locator(Amazon_MainPage.SEARCH_WORD)).to_contain_text(search_word)
     
+@pytest.mark.UI
 @pytest.mark.test3
-def test_footer(page:Page, go_to_amazon_main_page):
+def test_footer(page:Page):
     
     page.mouse.wheel(0,13188)      
     # x,y (horizontal-vertical) coordinats of an element.

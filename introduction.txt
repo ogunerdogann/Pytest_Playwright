@@ -69,7 +69,6 @@ Only run tests matching given mark expression.
 For example: -m 'mark1 and not mark2'.
 For example: -m 'mark1 or mark2'.
 
-
 **pytest -v, --verbose 
 Increase verbosity(TR- ayrinti)
 
@@ -79,3 +78,12 @@ Decrease verbosity(TR- ayrinti)
 ---> For all pytest CLI commands = pytest -h, --help
 
 CLI(Command-Line-Interface): A command-line interface (CLI) is a means of interacting with a computer program by inputting lines of text called command-lines
+
+-------------------- Recording a Test -----------------
+To record a test you should run your test like that:
+
+**pytest -m test2 --video=on --slowmo=500
+
+After that a folder which named 'test-results' will be created
+and the whole test will be recorded as video. With --slowmo=500
+your test steps will run with 0.5 second interval.
