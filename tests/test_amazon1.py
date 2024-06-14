@@ -25,7 +25,7 @@ def test_nutella(page:Page, go_to_amazon_main_page):
     search_word = ""
     for i in range(1,len(list(Search_Words))+1):
         search_word = Search_Words(i).name
-        page.pause()
+        #page.pause()
         page.locator(Amazon_MainPage.SEARCH_BOX).fill(search_word)
         page.locator(Amazon_MainPage.SEARCH_SUBMIT_BUTTON).click()
         page.wait_for_timeout(5000)

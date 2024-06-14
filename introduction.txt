@@ -33,3 +33,49 @@ we can watch and control our tests headed and step by step. For that;
 1- write page.pause() in your code, from where you want to control. 
 2- go to Terminal and set Playwright Debugger value to 1. --> set PWDEBUG=1
 3- run your test 
+
+----------------- Some Useful CLI Commands --------------------------
+**pytest -k <test_name>
+Example: test_nutella ----> pytest -k nutella 
+In this case only the test which named nutella will run.
+k --> 'keyword'
+
+**pytest -x 
+Stop at the first failure
+
+**pytest --maxfail=2
+Stop after two failures
+
+**pytest --lf
+Rerun last failed tests only
+
+**pytest --ff 
+Rerun all tests starting with failed tests
+
+**pytest --sw, --stepwise 
+Exit on test failure and continue from last failing test next time
+
+**pytest --sw-skip, --stepwise-skip
+Ignore the first failing test but stop on the next failing test. Implicitly enables --stepwise.
+
+**pytest -s 
+Shortcut for --capture=no
+
+**pytest --markers
+Show markers (builtin, plugin and per-project ones).
+
+**pytest -m MARKEXPR
+Only run tests matching given mark expression.
+For example: -m 'mark1 and not mark2'.
+For example: -m 'mark1 or mark2'.
+
+
+**pytest -v, --verbose 
+Increase verbosity(TR- ayrinti)
+
+**pytest -q, --quiet
+Decrease verbosity(TR- ayrinti)
+
+---> For all pytest CLI commands = pytest -h, --help
+
+CLI(Command-Line-Interface): A command-line interface (CLI) is a means of interacting with a computer program by inputting lines of text called command-lines
