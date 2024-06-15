@@ -18,7 +18,7 @@ class Amazon_MainPage:
               "Lebensmittel",
               "Küche, Haushalt & Wohnen"]
     PRIME_STUDENT_TEXT = "a[aria-label='Student']"
-    FOOTER_ELEMENT = "td.navFooterDescItem"      #"span[class='navFooterDescText']"  # !! index 9
+    FOOTER_ELEMENT = "td.navFooterDescItem"     
 
 class Search_Words(Enum):
     
