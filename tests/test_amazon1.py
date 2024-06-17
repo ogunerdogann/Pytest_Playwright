@@ -37,6 +37,7 @@ def test_nutella(page:Page):
 @pytest.mark.test3
 def test_footer(page:Page):
     
+    page.set_viewport_size({"width":1000, "height":700})
     page.mouse.wheel(0,13188)      
     # x,y (horizontal-vertical) coordinats of an element.
     # You can get this values under Inspect->Styles
