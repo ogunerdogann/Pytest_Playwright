@@ -44,7 +44,8 @@ def test_footer(page:Page):
 @pytest.mark.test4
 @pytest.mark.parametrize("emailtelefon",[("123456789"),
                                           ("acb.lou@gmail.com"),
-                                          ("6536533653")])
+                                          ("6536533653")])          
+
 def test_loginWithParametrize(page:Page,emailtelefon):
     page.locator(Amazon_MainPage.HALLO_ANMELDEN).hover()
     page.locator(Amazon_MainPage.HALLO_ANMELDEN).click()
