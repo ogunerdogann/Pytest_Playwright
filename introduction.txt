@@ -137,4 +137,4 @@ Inspect the page and than go to Console and give this commands:
 1- window.innerHeight
 2- window.outerHeight
 3- window.innerWidth
-4- window.outerWidth
+4- window.outerWidth 
