@@ -19,6 +19,8 @@ class Amazon_MainPage:
               "Küche, Haushalt & Wohnen"]
     PRIME_STUDENT_TEXT = "a[aria-label='Student']"
     FOOTER_ELEMENT = "td.navFooterDescItem"     
+    HALLO_ANMELDEN = "#nav-link-accountList-nav-line-1"
+    ANMELDEN_BUTTON = "span[class='nav-action-inner']"
 
 class Search_Words(Enum):
     

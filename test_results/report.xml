@@ -1,20 +1,117 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="10.759" timestamp="2024-06-14T15:48:57.153827" hostname="RCLKP294"><testcase classname="tests.test_amazon1" name="test_get_started_link[chromium]" time="10.722"><failure message="AssertionError: Locator expected to be visible&#10;Actual value: &lt;element(s) not found&gt; &#10;Call log:&#10;LocatorAssertions.to_be_visible with timeout 5000ms&#10;  - waiting for get_by_role(&quot;link&quot;, name=&quot;Amazon Basics1 &quot;)">page = &lt;Page url='https://www.amazon.de/'&gt;
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="2" failures="1" skipped="0" tests="3" time="6.261" timestamp="2024-06-20T11:32:41.025002" hostname="RCLKP294"><testcase classname="tests.test_amazon1" name="test_loginWithParametrize[chromium-123456789]" time="2.983"><failure message="playwright._impl._errors.TargetClosedError: Locator.hover: Target page, context or browser has been closed&#10;Call log:&#10;waiting for locator(&quot;#nav-link-accountList-nav-line-1&quot;)">page = &lt;Page url='https://www.amazon.de/'&gt;, emailtelefon = '123456789'
 
     @pytest.mark.UI
-    @pytest.mark.test1
-    def test_get_started_link(page:Page):
+    @pytest.mark.test4
+    @pytest.mark.parametrize("emailtelefon",[("123456789"),
+                                              ("acb.lou@gmail.com"),
+                                              ("6536533653")])
     
-        #deneme = "css=[type='submit']"
-    
-        # Expects page to have a heading with the name of installation
-        page.wait_for_timeout(1000)
-        expect(page.locator(Amazon_MainPage.AMAZON_LOGO)).to_be_visible()
-        expect(page.locator(Amazon_MainPage.SEARCH_BOX)).to_be_visible()
-&gt;       expect(page.get_by_role("link", name="Amazon Basics1 ")).to_be_visible()
-E       AssertionError: Locator expected to be visible
-E       Actual value: &lt;element(s) not found&gt; 
-E       Call log:
-E       LocatorAssertions.to_be_visible with timeout 5000ms
-E         - waiting for get_by_role("link", name="Amazon Basics1 ")
+    def test_loginWithParametrize(page:Page,emailtelefon):
+&gt;       page.locator(Amazon_MainPage.HALLO_ANMELDEN).hover()
 
-tests\test_amazon1.py:19: AssertionError</failure></testcase></testsuite></testsuites>
+tests\test_amazon1.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+C:\Users\Oguen.Erdogan\.pyenv\pyenv-win\versions\3.11.5\Lib\site-packages\playwright\sync_api\_generated.py:16284: in hover
+    self._sync(
+C:\Users\Oguen.Erdogan\.pyenv\pyenv-win\versions\3.11.5\Lib\site-packages\playwright\_impl\_locator.py:428: in hover
+    return await self._frame.hover(
+C:\Users\Oguen.Erdogan\.pyenv\pyenv-win\versions\3.11.5\Lib\site-packages\playwright\_impl\_frame.py:641: in hover
+    await self._channel.send("hover", locals_to_params(locals()))
+C:\Users\Oguen.Erdogan\.pyenv\pyenv-win\versions\3.11.5\Lib\site-packages\playwright\_impl\_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;playwright._impl._connection.Connection object at 0x00000198A7BBFA10&gt;, cb = &lt;function Channel.send.&lt;locals&gt;.&lt;lambda&gt; at 0x00000198AA6E36A0&gt;, is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -&gt; Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+&gt;           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TargetClosedError: Locator.hover: Target page, context or browser has been closed
+E           Call log:
+E           waiting for locator("#nav-link-accountList-nav-line-1")
+
+C:\Users\Oguen.Erdogan\.pyenv\pyenv-win\versions\3.11.5\Lib\site-packages\playwright\_impl\_connection.py:514: TargetClosedError</failure></testcase><testcase classname="tests.test_amazon1" name="test_loginWithParametrize[chromium-acb.lou@gmail.com]" time="1.425"><error message="failed on setup with &quot;playwright._impl._errors.TargetClosedError: Page.goto: Target page, context or browser has been closed&#10;Call log:&#10;navigating to &quot;https://www.amazon.de/&quot;, waiting until &quot;load&quot;&quot;">request = &lt;SubRequest 'ui_fixture' for &lt;Function test_loginWithParametrize[chromium-acb.lou@gmail.com]&gt;&gt;, page = &lt;Page url='https://www.amazon.de/'&gt;
+
+    @pytest.fixture()
+    def ui_fixture(request, page:Page):
+&gt;       page.goto(request.config.getoption("--amazon_base_url"))
+
+conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+C:\Users\Oguen.Erdogan\.pyenv\pyenv-win\versions\3.11.5\Lib\site-packages\playwright\sync_api\_generated.py:8686: in goto
+    self._sync(
+C:\Users\Oguen.Erdogan\.pyenv\pyenv-win\versions\3.11.5\Lib\site-packages\playwright\_impl\_page.py:519: in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+C:\Users\Oguen.Erdogan\.pyenv\pyenv-win\versions\3.11.5\Lib\site-packages\playwright\_impl\_frame.py:145: in goto
+    await self._channel.send("goto", locals_to_params(locals()))
+C:\Users\Oguen.Erdogan\.pyenv\pyenv-win\versions\3.11.5\Lib\site-packages\playwright\_impl\_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;playwright._impl._connection.Connection object at 0x00000198A7BBFA10&gt;, cb = &lt;function Channel.send.&lt;locals&gt;.&lt;lambda&gt; at 0x00000198AA7CE200&gt;, is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -&gt; Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+&gt;           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TargetClosedError: Page.goto: Target page, context or browser has been closed
+E           Call log:
+E           navigating to "https://www.amazon.de/", waiting until "load"
+
+C:\Users\Oguen.Erdogan\.pyenv\pyenv-win\versions\3.11.5\Lib\site-packages\playwright\_impl\_connection.py:514: TargetClosedError</error></testcase><testcase classname="tests.test_amazon1" name="test_loginWithParametrize[chromium-6536533653]" time="1.337"><error message="failed on setup with &quot;playwright._impl._errors.TargetClosedError: Page.goto: Target page, context or browser has been closed&#10;Call log:&#10;navigating to &quot;https://www.amazon.de/&quot;, waiting until &quot;load&quot;&quot;">request = &lt;SubRequest 'ui_fixture' for &lt;Function test_loginWithParametrize[chromium-6536533653]&gt;&gt;, page = &lt;Page url='https://www.amazon.de/'&gt;
+
+    @pytest.fixture()
+    def ui_fixture(request, page:Page):
+&gt;       page.goto(request.config.getoption("--amazon_base_url"))
+
+conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+C:\Users\Oguen.Erdogan\.pyenv\pyenv-win\versions\3.11.5\Lib\site-packages\playwright\sync_api\_generated.py:8686: in goto
+    self._sync(
+C:\Users\Oguen.Erdogan\.pyenv\pyenv-win\versions\3.11.5\Lib\site-packages\playwright\_impl\_page.py:519: in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+C:\Users\Oguen.Erdogan\.pyenv\pyenv-win\versions\3.11.5\Lib\site-packages\playwright\_impl\_frame.py:145: in goto
+    await self._channel.send("goto", locals_to_params(locals()))
+C:\Users\Oguen.Erdogan\.pyenv\pyenv-win\versions\3.11.5\Lib\site-packages\playwright\_impl\_connection.py:59: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;playwright._impl._connection.Connection object at 0x00000198A7BBFA10&gt;, cb = &lt;function Channel.send.&lt;locals&gt;.&lt;lambda&gt; at 0x00000198AA86CC20&gt;, is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -&gt; Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+&gt;           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TargetClosedError: Page.goto: Target page, context or browser has been closed
+E           Call log:
+E           navigating to "https://www.amazon.de/", waiting until "load"
+
+C:\Users\Oguen.Erdogan\.pyenv\pyenv-win\versions\3.11.5\Lib\site-packages\playwright\_impl\_connection.py:514: TargetClosedError</error></testcase></testsuite></testsuites>

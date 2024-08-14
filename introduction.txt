@@ -92,7 +92,49 @@ your test steps will run with 0.5 second interval.
 --------------------------- Tracing and Xml Report ---------------------------------
 --tracing retain-on-failure --output ./test_results --screenshot only-on-failure --junitxml=./test_results/report.xml
 
+--tracing retain-on-failure --> tracing only if there is any failure      (retain on failure --> TR- basarisizlik durumunda tutmak)
+--output --> Directory for artifacts produced by tests, defaults to test-results.
+--screenshot only-on-failure --> take screenshot if there is any failure
+--junitxml=./test_results/report.xml --> A xml report will be saved under test_results folder
+
 With this line (93) we can take screenshot where the failure is and create and xml report. 
 After run the test, you should change directory in command line using 'cd <directory name>' command to the xml report folder
 and than you should write 'playawright show-trace trace.zip' on command line. 
 You can see all the details about your failed test. A perfect Debug tool!!
+
+----------------------------------- PYTEST_ADDOPTS --------------------------------------
+In conftest.py file we can add a new command line command like that;
+def pytest_addoption(parser) -> None:
+    parser.addoption(
+        "--amazon_base_url",
+        action = "store",
+        default = "https://www.amazon.de/",
+        help = "Amazon main page URL"
+    )
+
+And if we want to go to this URL before our all tests, we should call this like that;
+@pytest.fixture()
+def ui_fixture(request, page:Page):
+    page.goto(request.config.getoption("--amazon_base_url"))
+    .
+    .
+    .
+
+If we don't want to write some commands in the command line every time we run our tests, we can 
+write them in pytest.ini file under addopts title;
+addopts = --headed --browser chromium
+          --amazon_base_url "https://www.amazon.de/"
+          --tracing retain-on-failure --output ./test_results --screenshot only-on-failure --junitxml=./test_results/report.xml
+
+PYTEST_ADDOPTS           Extra command line options
+
+------------------------------- Setting Browser Screen -------------------------
+page.set_viewport_size({"width":1000, "height":700})  
+
+So we can set the screeen size values. If we want to know the maximum size of browser screen,
+or if we want to know the horizontal and vertical size values of actual browser, we should 
+Inspect the page and than go to Console and give this commands:
+1- window.innerHeight
+2- window.outerHeight
+3- window.innerWidth
+4- window.outerWidth 
