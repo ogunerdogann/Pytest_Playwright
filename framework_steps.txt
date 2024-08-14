@@ -1,0 +1,12 @@
+### ----- ###
+1- Create necessary folders:
+    * pages
+    * dialogs
+    * sections
+    * reusable_methods (or components)
+
+2- Create folders for the configuration
+    * conftest.py
+    * pytest.ini
+
+3- 

@@ -9,15 +9,15 @@ pytest_plugins = [
 
 def pytest_addoption(parser) -> None:
     parser.addoption(
-        "--amazon_base_url",
+        "--wwc_base_url",
         action = "store",
-        default = "https://www.amazon.de/",
-        help = "Amazon main page URL"
+        default = "https://qa.wonderworldcollege.com/",
+        help = "Wonder World Collage main page URL"
     )
 
 @pytest.fixture()
 def ui_fixture(request, page:Page):
-    page.goto(request.config.getoption("--amazon_base_url"))
+    page.goto(request.config.getoption("--wwc_base_url"))
     # Click the Akzeptieren(cookies) button
     button = page.locator("css=input[name='accept']")
     button.click()
